@@ -7,10 +7,13 @@ export class Movie{
       }
     @PrimaryGeneratedColumn()
     id!: number;
+
     @Column({name:"title",type:"varchar"})
     title!: string;
+
     @Column({name:"gender",type:"varchar"})
     gender!: string;
+    
     @Column({ name: "subtitle", type: "varchar" })
     subtitle!: string
 
