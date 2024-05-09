@@ -7,7 +7,7 @@ export class Movie{
       }
     @PrimaryGeneratedColumn()
     id!: number;
-    
+
     @Column({name:"title",type:"varchar"})
     title!: string;
 
@@ -21,26 +21,26 @@ export class Movie{
     image!: string
 
     @Column({ name: "releaseDate", type: "date" })
-        releaseDate!: Date
+    releaseDate!: Date
 
     @Column({ name: "director", type: "varchar" })
-        director!: string
+    director!: string
 
     @Column({ name: "writer", type: "varchar" })
-        writer!: string
+    writer!: string
 
     @Column({ name: "studio", type: "varchar" })
-        studio!: string
+    studio!: string
 
     @Column({ name: "actors", type: "varchar" })
-        actors!: string[]
+    actors!: string[]
 
     @Column({ name: "resume", type: "varchar" })
-        resume!: string
+    resume!: string
 
     @Column({ name: "awards", type: "varchar" })
-        awards!: string
+    awards!: string
 
     @Column({ name: "note", type: "int" })
-        note!: number
+    note!: number
 }
