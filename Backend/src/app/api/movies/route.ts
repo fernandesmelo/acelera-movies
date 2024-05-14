@@ -3,13 +3,21 @@ import { Movie } from "@/app/models/Movie";
 import { NextResponse } from "next/server";
 
 export async function GET(req:Request) {
-    const connection = await getDBConnection()
     try {
-        const movieRepository = await connection.getRepository(Movie).find()
-        return NextResponse.json(movieRepository)
+        const connection = await getDBConnection();
+        const movies = await connection.getRepository(Movie).find({
+            select: ["id", "title", "releaseDate", "resume", "note"]
+        });
+
+        if (movies) {
+            return NextResponse.json({ movies: movies, message: "Lista de filmes obtida com sucesso!" });
+        } else {
+            return NextResponse.json({ message: "Nenhum filme encontrado." });
+        }
     } catch (error) {
-        // Em caso de erro, retorna uma NextResponseposta de erro
         console.error('Erro:', error);
-        return NextResponse.json({ auth: false, message: "Falha ao buscar os usuarios" })
+        return NextResponse.json({ message: "Falha ao buscar os filmes." });
     }
 }
+
+
